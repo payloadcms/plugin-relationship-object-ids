@@ -1,6 +1,7 @@
 {
   "name": "@payloadcms/plugin-relationship-object-ids",
   "description": "A Payload plugin to store all relationship IDs as ObjectIDs",
+  "homepage": "https://github.com/payloadcms/plugin-relationship-object-ids",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
