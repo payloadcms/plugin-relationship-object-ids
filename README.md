@@ -23,6 +23,10 @@ export default buildConfig({
 })
 ```
 
+### Migration
+
+Note - this plugin will only store newly created or resaved documents' relations as `ObjectID`s. It will not modify any of your existing data. If you'd like to convert existing data into an `ObjectID` format, you should write a migration script to loop over all documents in your database and then simply resave each one. 
+
 ### Support
 
 If you need help with this plugin, [join our Discord](https://t.co/30APlsQUPB) and we'd be happy to give you a hand.
