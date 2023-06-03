@@ -2,6 +2,8 @@
 
 This plugin automatically enables all Payload `relationship` and `upload` field types to be stored as `ObjectID`s in MongoDB.
 
+Minimum required version of Payload: `1.8.5`
+
 ## What it does
 
 It injects a `beforeChange` field hook into each `relationship` and `upload` field, which converts string-based IDs to `ObjectID`s immediately prior to storage.
