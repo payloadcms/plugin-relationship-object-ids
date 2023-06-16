@@ -2,7 +2,7 @@
 
 This plugin automatically enables all Payload `relationship` and `upload` field types to be stored as `ObjectID`s in MongoDB.
 
-Minimum required version of Payload: `1.8.5`
+Minimum required version of Payload: `1.9.5`
 
 ## What it does
 
