@@ -1,5 +1,6 @@
 import express from 'express'
 import payload from 'payload'
+import mongoose from 'mongoose'
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 require('dotenv').config()
@@ -17,6 +18,7 @@ payload.init({
   mongoURL: process.env.MONGODB_URI,
   express: app,
   onInit: async () => {
+    mongoose.set('debug', true)
     payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
   },
 })

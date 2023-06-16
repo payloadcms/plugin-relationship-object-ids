@@ -238,11 +238,10 @@ components/index.js
 components/styles.css
 
 # Ignore generated
-demo/generated-types.ts
-demo/generated-schema.graphql
+dev/generated-types.ts
+dev/generated-schema.graphql
 
 # Ignore dist, no need for git
 dist
 
-# Ignore emulator volumes
-src/adapters/s3/emulator/.localstack/
+src/uploads
