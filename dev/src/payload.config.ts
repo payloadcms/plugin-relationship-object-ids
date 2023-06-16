@@ -117,5 +117,13 @@ export default buildConfig({
         upload: upload.id,
       },
     })
+
+    await payload.create({
+      collection: 'relations',
+      depth: 0,
+      data: {
+        hasOnePoly: { relationTo: 'pages', value: page.id },
+      },
+    })
   },
 })

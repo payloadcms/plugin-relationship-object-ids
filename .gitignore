@@ -244,4 +244,4 @@ dev/generated-schema.graphql
 # Ignore dist, no need for git
 dist
 
-src/uploads
+dev/src/uploads

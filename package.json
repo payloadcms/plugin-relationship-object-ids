@@ -10,8 +10,9 @@
     "build": "tsc",
     "lint": "eslint src",
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
-    "clean": "rimraf dist && rimraf dev/yarn.lock",
-    "prepublishOnly": "yarn clean && yarn build"
+    "clean": "rimraf dist && rimraf dev/yarn.lock && rimraf dev/src/uploads",
+    "prepublishOnly": "yarn clean && yarn build && yarn test",
+    "test": "cd dev && yarn test"
   },
   "peerDependencies": {
     "payload": "^1.9.5"
