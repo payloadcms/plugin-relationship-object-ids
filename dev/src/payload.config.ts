@@ -1,8 +1,14 @@
 import { buildConfig } from 'payload/config'
 import path from 'path'
 import { relationshipsAsObjectID } from '../../src'
+import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 export default buildConfig({
+  db: mongooseAdapter({
+    url: process.env.MONGODB_URI,
+  }), // or postgresAdapter({}),
+  editor: lexicalEditor({}), // or slateEditor({})
   serverURL: 'http://localhost:3000',
   collections: [
     {
@@ -67,7 +73,7 @@ export default buildConfig({
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
   plugins: [relationshipsAsObjectID()],
-  onInit: async payload => {
+  onInit: async (payload) => {
     await payload.create({
       collection: 'users',
       data: {
