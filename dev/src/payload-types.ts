@@ -83,6 +83,15 @@ export interface Relation {
       )[]
     | null;
   upload?: string | Upload | null;
+  parent?: (string | null) | Relation;
+  breadcrumbs?:
+    | {
+        doc?: (string | null) | Relation;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }

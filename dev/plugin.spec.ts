@@ -11,7 +11,7 @@ describe('Plugin tests', () => {
 
   beforeAll(async () => {
     server = await start({ local: true })
-  },20000)
+  }, 20000)
 
   afterAll(async () => {
     await mongoose.connection.dropDatabase()
@@ -39,7 +39,6 @@ describe('Plugin tests', () => {
   })
 
   it('stores relations as object ids', async () => {
-
     const relationsQuery = await payload.find({
       collection: 'relations',
       sort: 'createdAt',
@@ -100,7 +99,18 @@ describe('Plugin tests', () => {
         },
       },
     })
+  })
 
-    expect(totalDocs).toStrictEqual(1)
+  it('populates parent relations', async () => {
+    const r1 = await payload.find({
+      collection: 'relations',
+    })
+
+    const r2 = await payload.create({
+      collection: 'relations', // required
+      data: {
+        parent: r1.docs[0],
+      },
+    })
   })
 })

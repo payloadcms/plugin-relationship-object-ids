@@ -3,6 +3,7 @@ import path from 'path'
 import { relationshipsAsObjectID } from '../../src'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import nestedDocs from '@payloadcms/plugin-nested-docs'
 
 export default buildConfig({
   db: mongooseAdapter({
@@ -72,7 +73,14 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
-  plugins: [relationshipsAsObjectID()],
+  plugins: [
+    relationshipsAsObjectID(),
+    nestedDocs({
+      collections: ['relations'],
+      generateLabel: (_, doc: any) => doc.title,
+      generateURL: (docs) => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
+    }),
+  ],
   onInit: async (payload) => {
     await payload.create({
       collection: 'users',
