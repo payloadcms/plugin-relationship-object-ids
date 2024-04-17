@@ -75,11 +75,13 @@ export default buildConfig({
   },
   plugins: [
     relationshipsAsObjectID(),
+    /*
     nestedDocs({
       collections: ['relations'],
       generateLabel: (_, doc: any) => doc.title,
       generateURL: (docs) => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
     }),
+    */
   ],
   onInit: async (payload) => {
     await payload.create({

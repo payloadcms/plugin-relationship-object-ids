@@ -15,7 +15,7 @@
     "test": "cd dev && yarn test"
   },
   "peerDependencies": {
-    "payload": "^1.9.5"
+    "payload": "^2.11.2"
   },
   "files": [
     "dist",
