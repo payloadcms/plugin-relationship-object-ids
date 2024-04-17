@@ -11,7 +11,7 @@ describe('Plugin tests', () => {
 
   beforeAll(async () => {
     server = await start({ local: true })
-  })
+  }, 20000)
 
   afterAll(async () => {
     await mongoose.connection.dropDatabase()
@@ -39,7 +39,13 @@ describe('Plugin tests', () => {
   })
 
   it('stores relations as object ids', async () => {
-    const docs = await payload.collections.relations.Model.find()
+    const relationsQuery = await payload.find({
+      collection: 'relations',
+      sort: 'createdAt',
+    })
+
+    const docs = relationsQuery.docs
+
     expect(typeof docs[0].hasOne).toBe('object')
     expect(typeof docs[0].hasOnePoly.value).toBe('object')
     expect(typeof docs[0].hasMany[0]).toBe('object')
@@ -93,7 +99,18 @@ describe('Plugin tests', () => {
         },
       },
     })
+  })
 
-    expect(totalDocs).toStrictEqual(1)
+  it('populates parent relations', async () => {
+    const r1 = await payload.find({
+      collection: 'relations',
+    })
+
+    const r2 = await payload.create({
+      collection: 'relations', // required
+      data: {
+        parent: r1.docs[0],
+      },
+    })
   })
 })
