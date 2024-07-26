@@ -15,7 +15,9 @@
     "test": "cd dev && yarn test"
   },
   "peerDependencies": {
-    "payload": "^1.9.5"
+    "payload": "^2.24.2",
+    "mongoose": "^6.12.3",
+    "webpack": "^5.5.3"
   },
   "files": [
     "dist",
@@ -36,7 +38,7 @@
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.6",
-    "payload": "^1.9.5",
+    "payload": "^2.24.2",
     "prettier": "^2.7.1",
     "rimraf": "^4.1.2",
     "ts-node": "^10.9.1",

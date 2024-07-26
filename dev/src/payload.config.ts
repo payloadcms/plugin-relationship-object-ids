@@ -1,9 +1,23 @@
 import { buildConfig } from 'payload/config'
 import path from 'path'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { relationshipsAsObjectID } from '../../src'
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
+  admin: {
+    bundler: webpackBundler(),
+  },
+  editor: lexicalEditor(),
+  db: mongooseAdapter({
+    url: process.env.DATABASE_URI,
+    schemaOptions: {
+      strict: false,
+    },
+    jsonParse: false,
+  }),
   collections: [
     {
       slug: 'uploads',

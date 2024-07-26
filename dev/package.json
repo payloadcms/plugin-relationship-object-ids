@@ -14,9 +14,12 @@
     "test": "rimraf src/uploads && jest --detectOpenHandles --forceExit"
   },
   "dependencies": {
+    "@payloadcms/bundler-webpack": "^1.0.7",
+    "@payloadcms/db-mongodb": "^1.7.0",
+    "@payloadcms/richtext-lexical": "^0.11.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "payload": "^1.9.5",
+    "payload": "^2.24.2",
     "rimraf": "^5.0.1"
   },
   "devDependencies": {

@@ -1,5 +1,3 @@
-import type { Server } from 'http'
-import mongoose from 'mongoose'
 import payload from 'payload'
 import type { Post, Relation } from 'payload/generated-types'
 import { start } from './src/server'
@@ -7,16 +5,9 @@ import { start } from './src/server'
 describe('Plugin tests', () => {
   let relations: Relation[]
   let posts: Post[]
-  let server: Server
 
   beforeAll(async () => {
-    server = await start({ local: true })
-  })
-
-  afterAll(async () => {
-    await mongoose.connection.dropDatabase()
-    await mongoose.connection.close()
-    server.close()
+    await start({ local: true })
   })
 
   it('seeds data accordingly', async () => {
@@ -39,7 +30,7 @@ describe('Plugin tests', () => {
   })
 
   it('stores relations as object ids', async () => {
-    const docs = await payload.collections.relations.Model.find()
+    const docs = await payload.db.collections.relations.find()
     expect(typeof docs[0].hasOne).toBe('object')
     expect(typeof docs[0].hasOnePoly.value).toBe('object')
     expect(typeof docs[0].hasMany[0]).toBe('object')
